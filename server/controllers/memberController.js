@@ -19,10 +19,28 @@ const login = async (req, res) => {
   } else res.status(401).json({ message: "Invalid password !!!" });
 };
 
-const updateMember = async(req,res)=>
-{
-  const
-}
+const updateMember = async (req, res) => {
+  try {
+    const memberExists = await Member.updateOne(
+      { _id: req.user._id },
+      req.body,
+      {
+        new: true,
+      }
+    );
+    const userDetails = _.omit(memberExists.toObject(), "password");
+    res
+      .status(200)
+      .json({ message: "Profile updated successfully !!!", user: userDetails });
+  } catch (error) {
+    console.log(error);
+    res.status(401).json(error.message);
+  }
+};
 const genToken = (id) => {
   return jwt.sign({ id }, process.env.SECRET, { expiresIn: "3d" });
+};
+module.exports = {
+  login,
+  updateMember,
 };
