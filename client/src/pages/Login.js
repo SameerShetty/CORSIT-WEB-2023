@@ -16,8 +16,8 @@ function Login() {
   }, [user, navigate]);
 
   const handleClick = (e) => {
-    e.preventDefault();
     setLoad(true);
+    e.preventDefault();
     dispatch({ type: "LOGIN_START" });
 
     const member = {
@@ -28,8 +28,8 @@ function Login() {
     axios
       .post("/api/member", member)
       .then((response) => {
+        setLoad(false);
         if (response.status === 200) {
-          setLoad(false);
           toast.success(response.data.message);
           localStorage.setItem("member", JSON.stringify(response.data.user));
           dispatch({ type: "LOGIN_SUCCESS", payload: response.data.token });
