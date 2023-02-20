@@ -3,10 +3,12 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { AuthContext } from "../context/authContext";
 import { useNavigate } from "react-router-dom";
+import Spinner from "../components/Spinner";
 
 function Profile() {
   const { user, dispatch } = useContext(AuthContext);
   const [formData, setFormData] = useState({});
+  const [isLoad, setLoad] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -38,6 +40,7 @@ function Profile() {
     });
   };
   const handleClick = (e) => {
+    setLoad(true);
     console.log(formData);
     e.preventDefault();
     const memberUpdate = {
@@ -63,6 +66,7 @@ function Profile() {
       )
       .then((response) => {
         if (response.status === 200) {
+          setLoad(false);
           toast.success(response.data.message);
           localStorage.setItem("member", JSON.stringify(response.data.user));
           setFormData(response.data.user);
@@ -70,6 +74,7 @@ function Profile() {
       })
       .catch((error) => {
         toast.error(error.response.data.message);
+        setLoad(false);
       });
   };
   const handleOnChange = (e) => {
@@ -227,7 +232,7 @@ function Profile() {
               </label>
             </div>
             <button type="submit" className="btn btn-dark">
-              Update
+              {isLoad ? <Spinner /> : "Update"}
             </button>
           </form>
         </div>

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "../components/Card";
+import Spinner from "../components/Spinner";
 
 function Team() {
   const [members, setMembers] = useState([]);
+  const [isLoad, setLoad] = useState(true);
 
   useEffect(() => {
     axios
@@ -13,6 +15,7 @@ function Team() {
         console.log(members);
       })
       .catch((err) => console.log(err.response));
+    setLoad(false);
   }, []);
   return (
     <div className="container-fluid">
@@ -20,9 +23,7 @@ function Team() {
         className="row align-items-center justify-content-center"
         style={{ minHeight: "100vh" }}
       >
-        {members.map((item) => (
-          <Card detail={item} />
-        ))}
+        {isLoad ? <Spinner /> : members.map((item) => <Card detail={item} />)}
       </div>
     </div>
   );

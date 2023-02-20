@@ -1,4 +1,5 @@
 import React from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { FaLinkedinIn, FaInstagram, FaGithub } from "react-icons/fa";
 function Card(props) {
   return (
@@ -7,11 +8,14 @@ function Card(props) {
         className="card shadow-lg p-3 mb-5 bg-white rounded"
         style={{ width: "90%" }}
       >
-        <img
+        <LazyLoadImage
           className="card-img-top"
-          src={props.detail.img}
           alt="Card image cap"
+          effect="blur"
+          style={{ width: "100%", objectFit: "cover" }}
+          src={props.detail.img}
         />
+
         <div className="card-body">
           <h5 className="card-title">
             {props.detail.name.toString().toUpperCase()}
