@@ -12,10 +12,13 @@ function Team() {
       .get("/api/member")
       .then((response) => {
         if (response.status === 200) setMembers(response.data);
+        setLoad(false);
         console.log(members);
       })
-      .catch((err) => console.log(err.response));
-    setLoad(false);
+      .catch((err) => {
+        setLoad(false);
+        console.log(err.response);
+      });
   }, []);
   return (
     <div className="container-fluid">
@@ -23,7 +26,11 @@ function Team() {
         className="row align-items-center justify-content-center"
         style={{ minHeight: "100vh" }}
       >
-        {isLoad ? <Spinner /> : members.map((item) => <Card detail={item} />)}
+        {isLoad ? (
+          <Spinner style={{ color: "#00abb3" }} />
+        ) : (
+          members.map((item) => <Card detail={item} />)
+        )}
       </div>
     </div>
   );
