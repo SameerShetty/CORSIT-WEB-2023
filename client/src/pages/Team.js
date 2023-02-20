@@ -26,11 +26,7 @@ function Team() {
         className="row align-items-center justify-content-center"
         style={{ minHeight: "100vh" }}
       >
-        {isLoad ? (
-          <Spinner style={{ color: "#00abb3" }} />
-        ) : (
-          members.map((item) => <Card detail={item} />)
-        )}
+        {isLoad ? <Spinner /> : members.map((item) => <Card detail={item} />)}
       </div>
     </div>
   );
