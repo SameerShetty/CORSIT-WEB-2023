@@ -1,3 +1,11 @@
+:root {
+  --teel: #00abb3;
+  --black: #3c4048;
+  --grey: #b2b2b2;
+  --dull-white: #eaeaea;
+  --prim-white: #fff;
+  --prim-black: #000;
+}
 * {
   margin: 0;
   padding: 0;
@@ -34,4 +42,22 @@ label:focus,
 .btn:active,
 .btn.active {
   box-shadow: none !important;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+body {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  background-color: var(--black);
 }

@@ -5,6 +5,7 @@ import About from "./pages/About";
 import Achievement from "./pages/Achievement";
 import Alumni from "./pages/Alumni";
 import Contact from "./pages/Contact";
+import Event from "./pages/Event";
 import FourOFour from "./pages/FourOFour";
 import Home from "./pages/Home";
 import Login from "./pages/Login";

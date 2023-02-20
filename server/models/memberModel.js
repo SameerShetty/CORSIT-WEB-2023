@@ -23,22 +23,20 @@ const memberSchema = mongoose.Schema(
       type: String,
       default: "",
     },
-    linkedIn: {
+    git: {
       type: String,
       default: "",
     },
     branch: {
       type: String,
+      default: "",
     },
     year: {
       type: Number,
     },
     tech: {
       type: String,
-    },
-    alumni: {
-      type: Boolean,
-      default: false,
+      default: "",
     },
   },
   {
