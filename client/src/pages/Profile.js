@@ -209,11 +209,11 @@ function Profile() {
                 className="form-control mb-3"
                 placeholder="Your linkedin"
                 name="linkedIn"
-                id="linkedin"
+                id="linkedIn"
                 value={formData.linkedIn}
                 onChange={handleOnChange}
               />
-              <label htmlFor="linkedin" className="form-label">
+              <label htmlFor="linkedIn" className="form-label">
                 LINKEDIN
               </label>
             </div>

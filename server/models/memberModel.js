@@ -27,6 +27,10 @@ const memberSchema = mongoose.Schema(
       type: String,
       default: "",
     },
+    linkedIn: {
+      type: String,
+      default: "",
+    },
     branch: {
       type: String,
       default: "",
