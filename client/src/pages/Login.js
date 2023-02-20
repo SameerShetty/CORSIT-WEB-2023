@@ -22,7 +22,7 @@ function Login() {
 
     const member = {
       email: formData.email.toString().toLowerCase(),
-      password: formData.password.toString().toLowerCase(),
+      password: formData.password,
     };
 
     axios
