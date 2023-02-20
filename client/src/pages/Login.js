@@ -4,9 +4,11 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import { useNavigate } from "react-router-dom";
+import Spinner from "../components/Spinner";
 
 function Login() {
   const { user, dispatch } = useContext(AuthContext);
+  const [isLoad, setLoad] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,6 +17,7 @@ function Login() {
 
   const handleClick = (e) => {
     e.preventDefault();
+    setLoad(true);
     dispatch({ type: "LOGIN_START" });
 
     const member = {
@@ -26,6 +29,7 @@ function Login() {
       .post("/api/member", member)
       .then((response) => {
         if (response.status === 200) {
+          setLoad(false);
           toast.success(response.data.message);
           localStorage.setItem("member", JSON.stringify(response.data.user));
           dispatch({ type: "LOGIN_SUCCESS", payload: response.data.token });
@@ -37,6 +41,7 @@ function Login() {
         }
       })
       .catch((error) => {
+        setLoad(false);
         toast.error(error.response.data.message);
         dispatch({ type: "LOGIN_FAILURE", payload: error });
       });
@@ -100,7 +105,7 @@ function Login() {
               </label>
             </div>
             <button type="submit" className="btn btn-dark">
-              Login
+              {isLoad ? <Spinner /> : "Login"}
             </button>
           </form>
         </div>
