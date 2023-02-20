@@ -13,10 +13,10 @@ function Team() {
       .then((response) => {
         if (response.status === 200) setMembers(response.data);
         setLoad(false);
-        console.log(members);
       })
       .catch((err) => {
         setLoad(false);
+        console.log(err.response.data.message);
         console.log(err.response);
       });
   }, []);
@@ -26,7 +26,11 @@ function Team() {
         className="row align-items-center justify-content-center"
         style={{ minHeight: "100vh" }}
       >
-        {isLoad ? <Spinner /> : members.map((item) => <Card detail={item} />)}
+        {isLoad ? (
+          <Spinner />
+        ) : (
+          members.map((item) => <Card detail={item} key={item._id} />)
+        )}
       </div>
     </div>
   );

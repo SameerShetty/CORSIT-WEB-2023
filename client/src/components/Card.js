@@ -1,6 +1,6 @@
 import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/black-and-white.css";
+import "react-lazy-load-image-component/src/effects/blur.css";
 import { FaLinkedinIn, FaInstagram, FaGithub } from "react-icons/fa";
 function Card(props) {
   return (
@@ -16,7 +16,7 @@ function Card(props) {
           <LazyLoadImage
             className="card-img-top "
             alt="Card image cap"
-            effect="black-and-white"
+            effect="blur"
             style={{
               objectFit: "cover",
               width: "220px",

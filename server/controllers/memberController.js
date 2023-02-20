@@ -39,10 +39,12 @@ const updateMember = async (req, res) => {
 };
 
 const getMembers = async (req, res) => {
-  const members = await Member.find({});
-  if (members) {
+  try {
+    const members = await Member.find({});
     res.status(200).json(members);
-  } else res.status(404);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
 };
 const genToken = (id) => {
   return jwt.sign({ id }, process.env.SECRET, { expiresIn: "3d" });
