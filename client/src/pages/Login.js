@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import { useNavigate } from "react-router-dom";
 
@@ -55,6 +56,12 @@ function Login() {
   });
   return (
     <div className="container-fluid">
+      <Link to="/">
+        <button className="btn btn-dark position-fixed top-0 end-0 mx-3 my-2">
+          Home
+        </button>
+      </Link>
+
       <div
         className="row align-items-center justify-content-center"
         style={{ minHeight: "100vh" }}
