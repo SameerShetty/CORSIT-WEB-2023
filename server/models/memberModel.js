@@ -48,4 +48,4 @@ const memberSchema = mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Member", memberSchema, "corsit");
+module.exports = mongoose.model("Member", memberSchema);
