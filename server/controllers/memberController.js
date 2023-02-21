@@ -40,8 +40,8 @@ const updateMember = async (req, res) => {
 
 const getMembers = async (req, res) => {
   try {
-    const members = await Member.find({});
-    res.status(200).json(members);
+    const users = await Member.find({});
+    res.status(200).json(users);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
